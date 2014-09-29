@@ -595,7 +595,7 @@ void App::UpdateGameLevel(float elapsed){
 				}
 			}
 		}
-		delay = 0.05f;
+		delay = 0.085f;
 	}
 
 	for (int i = 0; i < enemysize; i++){
