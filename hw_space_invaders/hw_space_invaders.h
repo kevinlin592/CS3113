@@ -595,12 +595,13 @@ void App::UpdateGameLevel(float elapsed){
 				}
 			}
 		}
-		delay = 0.09f;
+		delay = 0.05f;
 	}
 
 	for (int i = 0; i < enemysize; i++){
 		if (enemyhit(enemy1[i]) && enemy1[i].alive){
 			score += 40;
+			enemy1[i].x = 0.0f;
 			enemy1[i].alive = false;
 			if (!enemy1[i].shot){
 				enemy1[i].bullet.visible = false;
@@ -611,6 +612,7 @@ void App::UpdateGameLevel(float elapsed){
 		}
 		else if (enemyhit(enemy2[i]) && enemy2[i].alive){
 			score += 30;
+			enemy2[i].x = 0.0f;
 			enemy2[i].alive = false;
 			if (!enemy2[i].shot){
 				enemy2[i].bullet.visible = false;
@@ -621,6 +623,7 @@ void App::UpdateGameLevel(float elapsed){
 		}
 		else if (enemyhit(enemy3[i]) && enemy3[i].alive){
 			score += 20;
+			enemy3[i].x = 0.0f;
 			enemy3[i].alive = false;
 			if (!enemy3[i].shot){
 				enemy3[i].bullet.visible = false;
@@ -631,6 +634,7 @@ void App::UpdateGameLevel(float elapsed){
 		}
 		else if (enemyhit(enemy4[i]) && enemy4[i].alive){
 			score += 10;
+			enemy4[i].x = 0.0f;
 			enemy4[i].alive = false;
 			if (!enemy4[i].shot){
 				enemy4[i].bullet.visible = false;
