@@ -378,6 +378,8 @@ App::App() {
 	enemysize = 12;
 	enemyCount = 0;
 	animation = 0.0f;
+	levelheight = 0;
+	levelwidth = 0;
 
 	sprites = LoadTexture("sprites.png", GL_RGBA);
 	font = LoadTexture("font.png", GL_RGBA);
@@ -396,7 +398,7 @@ void App::Init() {
 }
 
 App::~App() {
-	if (levelData != NULL){
+	if (levelheight != 0 && levelwidth != 0){
 		freeLevel();
 	}
 	SDL_Quit();
@@ -590,10 +592,12 @@ void App::UpdateGameLevel(){
 	if (user.y < -11.0f){
 		state = STATE_GAME_OVER;
 		freeLevel();
+		return;
 	}
 	if (user.x > 35.5f){
 		state = STATE_GAME_OVER;
 		freeLevel();
+		return;
 	}
 
 	float animation;
@@ -733,7 +737,7 @@ void App::UpdateGameLevel(){
 				if (user.collidedTop || user.v_y > 0.0f){
 					state = STATE_GAME_OVER;
 					freeLevel();
-					break;
+					return;
 				}
 				score += 100;
 				jumped = 1;
@@ -786,7 +790,7 @@ void App::UpdateGameLevel(){
 			if (user.collisionx(enemy[i])){
 				state = STATE_GAME_OVER;
 				freeLevel();
-				break;
+				return;
 			}
 		}
 	}
@@ -838,6 +842,8 @@ void App::freeLevel(){
 		delete[] levelData[i];
 	}
 	delete[] levelData;
+	levelheight = 0;
+	levelwidth = 0;
 }
 
 void App::buildLevel(unsigned char **newlevelData, int newlevelheight, int newlevelwidth) {
