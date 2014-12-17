@@ -1,5 +1,5 @@
 bool removeBullet(Bullet b){
-	if (fabs(b.y) > TOP + 0.1f || fabs(b.x) > RIGHT + 0.1f){
+	if (fabs(b.y) > TOP + 0.2f|| fabs(b.x) > RIGHT + 0.05f){
 		return true;
 	}
 	return false;
